@@ -6,3 +6,4 @@ Four scripts, meant to be run in order. Each one builds on the last.
 |---|---|
 | `01-first-api-call` | Raw api mechanism: messages, roles, response shape |
 | `02-tool-calling` | Giving the model one tool. Native OpenAI-style |
+| `03-agent-loop` | The full reason -> act -> observe loop with multiple tools |
