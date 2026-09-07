@@ -16,3 +16,4 @@ A small agent the manages text notes using five tools: `calculator`, `get_curren
 | File | Role |
 |---|---|
 | `tools.py` | The actual functions and their OpenAI-compatible descriptions, and the sandbox guardrail |
+| `agent.py` | The http call to model, and the hardened reasoning loop. |
