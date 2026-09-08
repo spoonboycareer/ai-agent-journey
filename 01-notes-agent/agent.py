@@ -50,7 +50,11 @@ def run_agent(user_question: str, max_steps: int = 5, verbose: bool = True) -> s
     ]
 
     for step in range(max_steps):
-        data = call_model(messages=messages, tools=TOOLS_SPEC)
+        try:
+            data = call_model(messages=messages, tools=TOOLS_SPEC)
+        except Exception as e:
+            return f"Error: {e}"
+
         message = data["choices"][0]["message"]
         messages.append(message)
 
