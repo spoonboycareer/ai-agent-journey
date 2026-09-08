@@ -58,7 +58,7 @@ def write_note(filename: str, content: str) -> str:
         path = _safe_path(filename)
         with open(path, "w", encoding="utf-8") as f:
             f.write(content)
-        return f"Save note '{filename}' ({len(content)} characters)."
+        return f"Saved note '{filename}' ({len(content)} characters)."
     except ValueError as e:
         return f"Error {e}"
 
