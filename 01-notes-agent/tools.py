@@ -63,6 +63,17 @@ def write_note(filename: str, content: str) -> str:
         return f"Error {e}"
 
 
+def append_note(filename: str, content: str) -> str:
+    try:
+        path = _safe_path(filename)
+        with open(path, "a") as f:
+            f.write("\n")
+            f.write(content)
+        return f"Appended to the note {filename} ({len(content)} characters)."
+    except ValueError as e:
+        return f"Error {e}"
+
+
 TOOLS_SPEC = [
     {
         "type": "function",
@@ -127,6 +138,21 @@ TOOLS_SPEC = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "append_note",
+            "description": "Append the given content to an existing note after on a new line.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "filename": {"type": "string"},
+                    "content": {"type": "string"},
+                },
+                "required": ["filename", "content"],
+            },
+        },
+    },
 ]
 
 
@@ -136,4 +162,5 @@ AVAILABLE_TOOLS = {
     "list_notes": list_notes,
     "read_note": read_note,
     "write_note": write_note,
+    "append_note": append_note,
 }
